@@ -1744,7 +1744,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Objects with this trait may become a new prison for a revenant, in the event of its ectoplasm dispersing
 #define TRAIT_COZY_REVENANT_HOME "cozy_revenant_home"
 
+<<<<<<< HEAD
 /// Mobs with this trait will appear as human to medical scanners even if they are not human
 #define TRAIT_HUMAN_DISGUISE "human_disguise"
+=======
+#define TRAIT_AURA_OF_INFERNO "aura_of_inferno" /// CRIMSON EDIT ADD: Baali content
+>>>>>>> 3f4a169089eaac9f0eceb96075fc46d4c7ebceec
 
 // END TRAIT DEFINES

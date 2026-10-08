@@ -106,8 +106,13 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/board/secdata
+<<<<<<< HEAD
 	name = "Security Records Console Board"
 	desc = "Used to build a security records console, to manage and view the station's security records."
+=======
+	name = "Police Records Console Board" // CRIMSON GRID EDIT - Original: name = "Security Records Console Board"
+	desc = "Allows for the construction of circuit boards used to build a police records console." // CRIMSON GRID EDIT - Original: desc = "Allows for the construction of circuit boards used to build a security records console."
+>>>>>>> 3f4a169089eaac9f0eceb96075fc46d4c7ebceec
 	build_path = /obj/item/circuitboard/computer/secure_data
 	category = list(
 		RND_CATEGORY_COMPUTER + RND_SUBCATEGORY_COMPUTER_SECURITY

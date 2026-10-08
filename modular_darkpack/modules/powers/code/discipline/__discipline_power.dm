@@ -76,6 +76,11 @@
 	src.owner = discipline.owner
 
 /datum/discipline_power/Destroy(force)
+	// CRIMSON EDIT ADD START - Discipline Active Indicator
+	if (toggled && active)
+		owner?.clear_alert(DISCIPLINE_ACTIVE_ALERT(src))
+	// CRIMSON EDIT ADD END - Discipline Active Indicator
+
 	for(var/timer_id in duration_timers)
 		deltimer(timer_id)
 	duration_timers = null
@@ -461,10 +466,19 @@
 	do_caster_notification(target)
 	do_logging(target)
 
+<<<<<<< HEAD
 	if(spawns_magic_effect && magic_type)
 		var/turf/used_turf = get_turf(discipline.owner)
 		if(used_turf)
 			spawn_magic_after_effect(used_turf, discipline.owner, level, magic_type, magic_subtype)
+=======
+	// CRIMSON EDIT ADD START - Discipline Active Indicator
+	if (toggled)
+		var/atom/movable/screen/alert/discipline_active/indicator = owner.throw_alert(DISCIPLINE_ACTIVE_ALERT(src), /atom/movable/screen/alert/discipline_active)
+		if (istype(indicator))
+			indicator.set_power(src)
+	// CRIMSON EDIT ADD END - Discipline Active Indicator
+>>>>>>> 3f4a169089eaac9f0eceb96075fc46d4c7ebceec
 
 	owner.update_action_buttons()
 
@@ -677,6 +691,11 @@
 
 	if (deactivate_sound)
 		owner.playsound_local(owner, deactivate_sound, 50, FALSE)
+
+	// CRIMSON EDIT ADD START - Discipline Active Indicator
+	if (toggled)
+		owner.clear_alert(DISCIPLINE_ACTIVE_ALERT(src))
+	// CRIMSON EDIT ADD END - Discipline Active Indicator
 
 	owner.update_action_buttons()
 
