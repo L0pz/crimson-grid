@@ -1,14 +1,16 @@
 #define DEFAULT_MAP_SIZE 15
 
 /obj/machinery/computer/security
-	name = "security camera console"
-	desc = "Used to access the various cameras on the station."
-	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/warrant")
-	icon_screen = "cameras"
-	icon_keyboard = "security_key"
+	name = "cctv monitor"
+	desc = "Welcome to Bubway. A magical place for kids and grown-ups alike, where fantasy and fun come to life. Bubway Sandwiches is not responsible for damage to property or person. Upon discovering that damage or death has occurred, a missing person report will be filed within 90 days, or as soon property and premises have been thoroughly cleaned and bleached, and the carpets have been replaced."
+	icon_state = "cctv"
+	icon_screen = "cctv_screen"
+	icon_keyboard = null
+	pixel_y = 3
 	circuit = /obj/item/circuitboard/computer/security
 	light_color = COLOR_SOFT_RED
 	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON|INTERACT_MACHINE_REQUIRES_SIGHT
+	pixel_y = 3
 
 	var/list/network = list(CAMERANET_NETWORK_SS13)
 	var/obj/machinery/camera/active_camera
