@@ -1,16 +1,14 @@
 #define DEFAULT_MAP_SIZE 15
 
 /obj/machinery/computer/security
-	name = "cctv monitor"
-	desc = "Welcome to Bubway. A magical place for kids and grown-ups alike, where fantasy and fun come to life. Bubway Sandwiches is not responsible for damage to property or person. Upon discovering that damage or death has occurred, a missing person report will be filed within 90 days, or as soon property and premises have been thoroughly cleaned and bleached, and the carpets have been replaced."
-	icon_state = "cctv"
-	icon_screen = "cctv_screen"
-	icon_keyboard = null
-	pixel_y = 3
+	name = "security camera console"
+	desc = "Used to access the various cameras on the station."
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/warrant")
+	icon_screen = "cameras"
+	icon_keyboard = "security_key"
 	circuit = /obj/item/circuitboard/computer/security
 	light_color = COLOR_SOFT_RED
 	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON|INTERACT_MACHINE_REQUIRES_SIGHT
-	pixel_y = 3
 
 	var/list/network = list(CAMERANET_NETWORK_SS13)
 	var/obj/machinery/camera/active_camera
@@ -104,6 +102,7 @@
 		active_camera?.on_stop_watching(src)
 		var/obj/machinery/camera/selected_camera = locate(params["camera"]) in SScameras.cameras
 		active_camera = selected_camera
+		cam_screen.set_display(active_camera)
 
 		if(isnull(active_camera))
 			return TRUE
@@ -158,6 +157,7 @@
 	if(length(concurrent_users) == 0 && is_living)
 		active_camera?.on_stop_watching(src)
 		active_camera = null
+		cam_screen?.set_display(null)
 		last_camera_turf = null
 		playsound(src, 'sound/machines/terminal/terminal_off.ogg', 25, FALSE)
 
